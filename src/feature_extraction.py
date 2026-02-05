@@ -1,6 +1,6 @@
 
-# feature_extraction text to features using BoW and TF-IDF
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+# feature_extraction text to features using BoW 
+from sklearn.feature_extraction.text import CountVectorizer
 
 def get_bow_features(X_train, X_test):
 

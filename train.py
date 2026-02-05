@@ -39,4 +39,4 @@ def train_model(csv_path):
     save_vectorizer(vectorizer)
 
 if __name__ == "__main__":
-   train_model(csv_path=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'spam_processed.csv'))
+   train_model(csv_path=os.path.join(os.getcwd(), 'data', 'spam.csv'))

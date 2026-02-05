@@ -25,3 +25,11 @@ def load_model(filename='spam_classifier.pkl'):
     print(f"Model loaded from: {path}")
     return model
 
+
+def save_vectorizer(vectorizer, filename='vectorizer.pkl'):
+    models_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'models')
+    os.makedirs(models_dir, exist_ok=True)
+
+    path = os.path.join(models_dir, filename)
+    joblib.dump(vectorizer, path)
+    print(f"Vectorizer saved at: {path}")

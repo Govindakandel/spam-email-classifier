@@ -6,8 +6,8 @@ import pandas as pd
  # Load trained model and vectorizer from models folder
 def load_model_and_vectorizer(model_filename='spam_classifier.pkl', vectorizer_filename='vectorizer.pkl'):
 
-    base_dir = os.path.dirname(os.path.dirname(__file__))  # root repo directory
-    models_dir = os.path.join(base_dir, 'models')
+   #  models r directory
+    models_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'models')
     model_path = os.path.join(models_dir, model_filename)
     vectorizer_path = os.path.join(models_dir, vectorizer_filename)
 
@@ -21,8 +21,7 @@ def load_model_and_vectorizer(model_filename='spam_classifier.pkl', vectorizer_f
 # Predict if a single email is spam or ham
 def predict_email(text, model, vectorizer):
      
-    # Preprocess email
-     
+    # Preprocess email  
     df = preprocess_text(pd.DataFrame({'Message': [text]}), text_column='Message')
 
     # Convert to vector

@@ -1,9 +1,13 @@
 import pandas as pd
+import os 
 
-def load_data(path="./data/raw/spam.csv"):
+# read data from csv file
+def load_data(path):
     df = pd.read_csv(path)
+    print(f"Data loaded from: {path}")
     return df
 
+# text preprocessing function
 def preprocess_text(df, text_column='Message'):
     
     # drop null values

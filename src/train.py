@@ -1,15 +1,15 @@
 from src.data_preprocessing import load_data, preprocess_text
 from src.feature_extraction import get_bow_features
-from src.model import train_nb, save_model
+from src.model import train_nb, save_model , save_vectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix
 import os
-import joblib
 
 
-def train_model():
+def train_model(csv_path):
+    print(csv_path)
     # load and preprocess data
-    df = load_data()
+    df = load_data(path=csv_path)
     df = preprocess_text(df)
 
     #  Split data
@@ -34,13 +34,9 @@ def train_model():
 
     # Save model
     save_model(model)
-    print("Model trained and saved successfully!")
 
     # Save vectorizer / bags of words
-    vectorizer_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'models', 'vectorizer.pkl')
-    os.makedirs(os.path.dirname(vectorizer_path), exist_ok=True)
-    joblib.dump(vectorizer, vectorizer_path)
-    print(f"Vectorizer saved at: {vectorizer_path}")
+    save_vectorizer(vectorizer)
 
 if __name__ == "__main__":
-    train_model()
+   train_model(csv_path=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'spam_processed.csv'))

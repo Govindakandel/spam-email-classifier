@@ -5,6 +5,7 @@ def load_data(path="./data/raw/spam.csv"):
     return df
 
 def preprocess_text(df, text_column='Message'):
+    
     # drop null values
     df = df.dropna(subset=[text_column])
 

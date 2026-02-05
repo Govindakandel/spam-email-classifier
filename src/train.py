@@ -3,6 +3,8 @@ from src.feature_extraction import get_bow_features
 from src.model import train_nb, save_model
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix
+import os
+import joblib
 
 
 def train_model():
@@ -33,6 +35,12 @@ def train_model():
     # Save model
     save_model(model)
     print("Model trained and saved successfully!")
+
+    # Save vectorizer / bags of words
+    vectorizer_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'models', 'vectorizer.pkl')
+    os.makedirs(os.path.dirname(vectorizer_path), exist_ok=True)
+    joblib.dump(vectorizer, vectorizer_path)
+    print(f"Vectorizer saved at: {vectorizer_path}")
 
 if __name__ == "__main__":
     train_model()

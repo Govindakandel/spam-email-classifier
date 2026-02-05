@@ -1,5 +1,6 @@
 from sklearn.naive_bayes import MultinomialNB
 import joblib
+import os
 
  # Train a Multinomial Naive Bayes model
 def train_nb(X_train, y_train):
@@ -7,10 +8,20 @@ def train_nb(X_train, y_train):
     model.fit(X_train, y_train)
     return model
 
-#  Save trained model to disk
-def save_model(model, path='../models/spam_classifier.pkl'):
-    joblib.dump(model, path)
+#  Save trained model to models directory
+def save_model(model, filename='spam_classifier.pkl'):
+    models_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'models')
+    os.makedirs(models_dir, exist_ok=True)
 
-#  Load trained model from disk
-def load_model(path='../models/spam_classifier.pkl'):
-    return joblib.load(path)
+    path = os.path.join(models_dir, filename)
+    joblib.dump(model, path)
+    print(f"Model saved at: {path}")
+
+#  Load trained model from models directory
+def load_model(filename='spam_classifier.pkl'):
+    models_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'models')
+    path = os.path.join(models_dir, filename)
+    model = joblib.load(path)
+    print(f"Model loaded from: {path}")
+    return model
+

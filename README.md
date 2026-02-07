@@ -7,7 +7,7 @@ A clean, end-to-end **Machine Learning project** for detecting spam emails using
 ## 🚀 Features
 
 * Text preprocessing pipeline (cleaning, normalization)
-* Feature extraction using **Bag of Words (BoW)** 
+* Feature extraction using **Bag of Words (BoW)** and **TF-IDF**
 * Supervised ML models for spam classification
 * Train–test evaluation with standard metrics
 * Command-line prediction support
@@ -133,8 +133,7 @@ notebooks/exploration.ipynb
 
 ## 📌 Future Improvements
 
-* Replace BoW with **TF-IDF / Word Embeddings**
-* Try advanced models (SVM, Logistic Regression, Transformers)
+* Try advanced models (SVM , Transformers)
 * Add FastAPI / Flask API for deployment
 * Dockerize the application
 * Add CI/CD and automated tests
